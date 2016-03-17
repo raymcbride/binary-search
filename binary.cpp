@@ -147,7 +147,10 @@ void construct_display(Node* root)
 
 int main()
 {
-	ifstream infile("a6p.txt");
+	cout << "Please enter the path to the file" << endl;
+	string filepath = "";
+	cin >> filepath;
+        ifstream infile(filepath);
 	if(infile.fail())
 	{	cout << "File Open Failure " << endl;
 		return EXIT_FAILURE;
