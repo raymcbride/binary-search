@@ -138,7 +138,8 @@ void construct_display(Node* root)
 			if(!there)
 				std::cout << num << " not there" << std::endl;
 		}
-		std::cout << std::endl << std::endl << "Type in a name or a mark or ! to Quit: ";
+		std::cout << std::endl << std::endl << 
+            "Type in a name or a mark or ! to Quit: ";
 		std::cin >> response;
 	}
 }
