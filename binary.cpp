@@ -13,7 +13,7 @@ using namespace std;
 
 class Node
 {
-	public:
+    public:
  	 string s;
 	 int n;
 	 Node *lname, *rname, *lmark, *rmark;
@@ -165,7 +165,8 @@ int main()
 	{	istringstream is(full_line);
 		is >> name >> mark;
 		Node* usernode = new Node;
-		usernode->lname = usernode->rname = usernode->lmark = usernode->rmark = NULL;
+		usernode->lname = usernode->rname = usernode->lmark = usernode->rmark = 
+            NULL;
 		usernode->s = name;
 		usernode->n = mark;
 		if (root == NULL)
