@@ -5,6 +5,7 @@
 #include<fstream>
 #include<sstream>
 #include<cassert>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -150,7 +151,7 @@ int main()
 	cout << "Please enter the path to the file" << endl;
 	string filepath = "";
 	cin >> filepath;
-        ifstream infile(filepath);
+    ifstream infile(filepath.c_str());
 	if(infile.fail())
 	{	cout << "File Open Failure " << endl;
 		return EXIT_FAILURE;
