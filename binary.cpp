@@ -5,16 +5,13 @@
 #include<fstream>
 #include<sstream>
 #include<cassert>
-#include <stdlib.h>
-
-using namespace std;
 
 /* CLASSES ********************************************************************/
 
 class Node
 {
     public:
- 	 string s;
+ 	 std::string s;
 	 int n;
 	 Node *lname, *rname, *lmark, *rmark;
 };
@@ -56,7 +53,7 @@ void display_name(Node* root)
 {
 	if (root != NULL)
 	{	display_name(root->lname);
-		cout << root->s << " " << root->n << endl;
+		std::cout << root->s << " " << root->n << std::endl;
 		display_name(root->rname);
 	}
 }
@@ -69,7 +66,7 @@ void display_mark(Node* root)
 {
 	if (root != NULL)
 	{	display_mark(root->rmark);
-		cout << root->s << " " << root->n << endl;
+		std::cout << root->s << " " << root->n << std::endl;
 		display_mark(root->lmark);
 	}
 }
@@ -84,7 +81,7 @@ void search_mark(Node* root, int x, bool& there)
 */
 {
 	if (root->n == x)
-	{	cout << root->s << " " << root->n << "  ";
+	{	std::cout << root->s << " " << root->n << "  ";
 		there = true;
 	}
 	if (root->lmark != NULL)
@@ -93,7 +90,7 @@ void search_mark(Node* root, int x, bool& there)
 		search_mark(root->rmark, x, there);
 }
 
-void search_name(Node* root, string st, bool& there)
+void search_name(Node* root, std::string st, bool& there)
 /*	PURPOSE: 	Searches the binary tree for a specific user name and
 				displays user marks that have that name together with the
 				name.
@@ -103,7 +100,7 @@ void search_name(Node* root, string st, bool& there)
 */
 {
 	if (root->s == st)
-	{	cout << root->s << " " << root->n << "  ";
+	{	std::cout << root->s << " " << root->n << "  ";
 		there = true;
 	}
 	if (root->lname != NULL)
@@ -117,52 +114,52 @@ void construct_display(Node* root)
 	RECEIVES:	root - the root of the binary tree.
 */
 {
-	cout << "Name order:" << endl;
+	std::cout << "Name order:" << std::endl;
 	display_name(root);
-	cout << endl << "Mark order:" << endl;
+	std::cout << std::endl << "Mark order:" << std::endl;
 	display_mark(root);
-	cout << endl;
-	string response = "";
-	cout << "Type in a name or a mark or ! to Quit: ";
-	cin >> response;
+	std::cout << std::endl;
+	std::string response = "";
+	std::cout << "Type in a name or a mark or ! to Quit: ";
+	std::cin >> response;
 	while(response != "!")
 	{	bool there = false;
 		int num;
-		istringstream is(response);
+		std::istringstream is(response);
 		is >> num;
 		if(is.fail())
 		{	search_name(root, response, there);
 			if(!there)
-				cout << response << " not there" << endl;
+				std::cout << response << " not there" << std::endl;
 		}
 		else
 		{
 			search_mark(root, num, there);
 			if(!there)
-				cout << num << " not there" << endl;
+				std::cout << num << " not there" << std::endl;
 		}
-		cout << endl << endl << "Type in a name or a mark or ! to Quit: ";
-		cin >> response;
+		std::cout << std::endl << std::endl << "Type in a name or a mark or ! to Quit: ";
+		std::cin >> response;
 	}
 }
 
 int main()
 {
-	cout << "Please enter the path to the file" << endl;
-	string filepath = "";
-	cin >> filepath;
-    ifstream infile(filepath.c_str());
+	std::cout << "Please enter the path to the file" << std::endl;
+	std::string filepath = "";
+	std::cin >> filepath;
+    std::ifstream infile(filepath.c_str());
 	if(infile.fail())
-	{	cout << "File Open Failure " << endl;
+	{	std::cout << "File Open Failure " << std::endl;
 		return EXIT_FAILURE;
 	}
-	string full_line;
-	string name;
+	std::string full_line;
+	std::string name;
 	int mark;
 
 	Node* root = NULL;
 	while (getline(infile, full_line))
-	{	istringstream is(full_line);
+	{	std::istringstream is(full_line);
 		is >> name >> mark;
 		Node* usernode = new Node;
 		usernode->lname = usernode->rname = usernode->lmark = usernode->rmark = 
